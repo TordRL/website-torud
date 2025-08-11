@@ -1,2 +1,3 @@
-# website-torud
-My own personal website. Maily for testing purposes! :D
+# TORUDs WEBSITE!
+This is in essence only for testing.
+Vibecoding and chill
