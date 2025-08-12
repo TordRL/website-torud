@@ -1,50 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="style.css"  rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tord Resch Lindaas | Personal Homepage</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
     <div><strong>Tord Resch Lindaas</strong></div>
-    <nav>
+    <nav role="navigation" aria-label="Main Navigation">
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <section class="section" id="about">
-    <h2>About Me</h2>
-    <p>Hello! I'm Tord Resch Lindaas, an IT consultant based in Oslo. I specialize in delivering smart, scalable solutions for businesses and organizations. With a passion for technology and problem-solving, my goal is to tailor      systems to best tend business needs. Effective solutions are when systems help people get the job done.</p>
-  </section>
+  <main>
+    <section class="section" id="about">
+      <h2>About Me</h2>
+      <p>
+        Hello! I'm Tord Resch Lindaas, an IT consultant based in Oslo. I specialize in delivering smart, scalable solutions for businesses and organizations. With a passion for technology and problem-solving, my goal is to tailor systems to best tend business needs. Effective solutions are when systems help people get the job done.
+      </p>
+    </section>
 
-  <section class="section" id="skills">
-    <h2>Skills</h2>
-    <div class="skills">
-      <div class="skill">System Architecture</div>
-      <div class="skill">Cloud Solutions</div>
-      <div class="skill">DevOps</div>
-      <div class="skill">Security & Compliance</div>
-      <div class="skill">Frontend & Backend Development</div>
-      <div class="skill">Project Management</div>
-    </div>
-  </section>
+    <section class="section" id="skills">
+      <h2>Skills</h2>
+      <div class="skills">
+        <div class="skill">System Architecture</div>
+        <div class="skill">Cloud Solutions</div>
+        <div class="skill">DevOps</div>
+        <div class="skill">Security & Compliance</div>
+        <div class="skill">Frontend & Backend Development</div>
+        <div class="skill">Project Management</div>
+      </div>
+    </section>
 
   <section class="section" id="contact">
-    <h2>Contact Me</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea rows="5" placeholder="Your Message" required></textarea>
+    <div class="contact-container">
+
+    <form action="https://api.web3forms.com/submit" method="POST" class="contact-container">
+      <div class="contact-left-title">
+        <h2>Contact Information</h2>
+      </div>
+      <input type="hidden" name="access_key" value="89476029-b273-48ff-9273-b293166d3cc1">
+      <input type="text" name="name" placeholder="Your Name" class="contact-container" required />
+      <input type="email" name="email" placeholder="Your Email" class="contact-container" required />
+      <textarea rows="5" name="message" placeholder="Your Message" class="contact-container" required></textarea>
+      <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
       <button type="submit">Send Message</button>
     </form>
+    </div>
   </section>
+  </main>
 
   <footer>
-    &copy; 2025 Tord Resch Lindaas. All rights reserved.
+    © 2025 Tord Resch Lindaas. All rights reserved.
   </footer>
+<script>
+document.getElementById("contact-form").addEventListener("submit", function(event) {
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+    if (!name || !email || !message) {
+        alert("Please fill out all fields before submitting.");
+        event.preventDefault();
+    }
+});
+</script>
 </body>
 </html>
