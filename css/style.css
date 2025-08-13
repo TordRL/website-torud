@@ -9,11 +9,7 @@ html, body {
   flex-direction: column;
 }
 
-body {
-  flex: 1;
-}
-
-main {
+body, main {
   flex: 1;
 }
 
@@ -21,9 +17,23 @@ main {
 header {
   background-color: #2c3e50;
   color: white;
-  padding: 1rem 2rem;
+  padding: 1rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.header-container {
+  width: 100%;
+  max-width: 1000px;
+  padding: 0 2rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.header-title,
+.header-nav {
+  display: flex;
   align-items: center;
 }
 
@@ -79,6 +89,8 @@ textarea {
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Button */
@@ -105,8 +117,25 @@ footer {
   margin-top: 2rem;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
+/* Accessibility */
+label {
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .header-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .header-title,
+  .header-nav {
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
   header {
     flex-direction: column;
     align-items: flex-start;
@@ -115,25 +144,40 @@ footer {
   nav {
     margin-top: 0.5rem;
   }
+
+  .section {
+    padding: 1rem;
+  }
+
+  .skills {
+    flex-direction: column;
+  }
 }
-/* 
 
-/* Accessibility Enhancements */
-label {
-    font-weight: bold;
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #181c24;
+  color: #e3e6eb;
 }
-
-/* Mobile-first improvements */
-@media (max-width: 480px) {
-    .section {
-        padding: 1rem;
-    }
-
-    .skills {
-        flex-direction: column;
-    }
-
-    input, textarea, button {
-        width: 100%;
-    }
+body.dark-mode header,
+body.dark-mode footer {
+  background-color: #232a36;
+  color: #e3e6eb;
+}
+body.dark-mode .skill {
+  background-color: #232a36;
+  box-shadow: 0 2px 4px rgba(30, 41, 59, 0.2);
+}
+body.dark-mode input,
+body.dark-mode textarea {
+  background-color: #232a36;
+  color: #e3e6eb;
+  border: 1px solid #3a4252;
+}
+body.dark-mode button {
+  background-color: #375a7f;
+  color: #fff;
+}
+body.dark-mode button:hover {
+  background-color: #4a77a8;
 }
