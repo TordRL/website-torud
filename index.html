@@ -12,6 +12,10 @@
       <div class="header-title">
         <strong>Tord Resch Lindaas</strong>
       </div>
+      <label class="dark-mode-toggle">
+        <input type="checkbox" id="darkModeSwitch">
+        <span class="slider"></span>
+      </label>
       <div class="header-nav">
         <nav role="navigation" aria-label="Main Navigation">
           <a href="#about">About</a>
@@ -42,6 +46,15 @@
       </div>
     </section>
 
+    <section class="section" id="motivational-quotes">   
+      <div class="contact-container">
+        <buttonsize class="contact-container">
+          <button onclick="window.location.href='quotepage.html'">Motivational Quotes here!</button>
+        </buttonsize>
+      </div>
+    </section>
+
+
     <section class="section" id="contact">
       <div class="contact-container">
         <form action="https://api.web3forms.com/submit" method="POST" class="contact-container">
@@ -63,18 +76,31 @@
     © 2025 Tord Resch Lindaas. All rights reserved.
   </footer>
 
-<button onclick="toggleDarkMode()" style="position: fixed; top: 4rem; right: 1rem; z-index: 1000;">Toggle Dark Mode</button>
+
 <script>
-function toggleDarkMode() {
-  document.body.classList.toggle("dark-mode");
-  localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
-}
-window.onload = function() {
-  if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark-mode");
-  }
-}
+  // Sync theme and toggle switch before page fully loads
+  document.addEventListener("DOMContentLoaded", function () {
+    const savedTheme = localStorage.getItem("theme");
+    const isDark = savedTheme === "dark";
+
+    if (isDark) {
+      document.body.classList.add("dark-mode");
+    }
+
+    const toggle = document.getElementById("darkModeSwitch");
+    if (toggle) {
+      toggle.checked = isDark;
+    }
+
+    // Optional: Add listener here instead of inline HTML
+    toggle.addEventListener("change", function () {
+      const isDark = toggle.checked;
+      document.body.classList.toggle("dark-mode", isDark);
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    });
+  });
 </script>
+
 
 </body>
 </html>
