@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Motivational Quote Card</title>
+  <link rel="stylesheet" href="css/stylequote.css" />
+</head>
+<body>
+  <div class="card">
+    <div class="quote" id="quote">Loading...</div>
+    <div class="author" id="author"></div>
+  </div>
+
+  <script>
+    const quotes = [
+      { text: "Push yourself, because no one else is going to do it for you.", author: "Unknown" },
+      { text: "Great things never come from comfort zones.", author: "Unknown" },
+      { text: "Dream it. Wish it. Do it.", author: "Unknown" },
+      { text: "Success doesn’t just find you. You have to go out and get it.", author: "Unknown" },
+      { text: "The harder you work for something, the greater you’ll feel when you achieve it.", author: "Unknown" },
+      { text: "Don’t watch the clock; do what it does. Keep going.", author: "Sam Levenson" },
+      { text: "Success is what comes after you stop making excuses.", author: "Luis Galarza" },
+      { text: "Wake up with determination. Go to bed with satisfaction.", author: "Unknown" },
+      { text: "Do something today that your future self will thank you for.", author: "Sean Patrick Flanery" },
+      { text: "Little things make big days.", author: "Isabel Marant" },
+      { text: "It’s going to be hard, but hard does not mean impossible.", author: "Art Briles" },
+      { text: "Don’t wait for opportunity. Create it.", author: "George Bernard Shaw" },
+      { text: "Sometimes we’re tested not to show our weaknesses, but to discover our strengths.", author: "Unknown" },
+      { text: "The key to success is to focus on goals, not obstacles.", author: "Unknown" },
+      { text: "Believe you can and you're halfway there.", author: "Theodore Roosevelt" },
+      { text: "Your limitation—it’s only your imagination.", author: "Unknown" },
+      { text: "Push yourself, because no one else is going to do it for you.", author: "Unknown" },
+      { text: "Sometimes later becomes never. Do it now.", author: "Unknown" },
+      { text: "Great things never come from comfort zones.", author: "Unknown" },
+      { text: "Dream it. Wish it. Do it.", author: "Unknown" },
+      { text: "Stay focused and never give up.", author: "Unknown" },
+      { text: "Don’t stop when you’re tired. Stop when you’re done.", author: "Marilyn Monroe" },
+      { text: "Work hard in silence, let success make the noise.", author: "Frank Ocean" },
+      { text: "The only limit to our realization of tomorrow is our doubts of today.", author: "Franklin D. Roosevelt" },
+      { text: "Act as if what you do makes a difference. It does.", author: "William James" },
+      { text: "Success is not final, failure is not fatal: It is the courage to continue that counts.", author: "Winston Churchill" },
+      { text: "Hardships often prepare ordinary people for an extraordinary destiny.", author: "C.S. Lewis" },
+      { text: "Believe in yourself and all that you are.", author: "Christian D. Larson" },
+      { text: "You are capable of amazing things.", author: "Unknown" },
+      { text: "Don’t limit your challenges. Challenge your limits.", author: "Jerry Dunn" },
+      { text: "It always seems impossible until it’s done.", author: "Nelson Mandela" },
+      { text: "Start where you are. Use what you have. Do what you can.", author: "Arthur Ashe" },
+      { text: "You don’t have to be great to start, but you have to start to be great.", author: "Zig Ziglar" },
+      { text: "Success is the sum of small efforts, repeated day in and day out.", author: "Robert Collier" },
+      { text: "Don’t be afraid to give up the good to go for the great.", author: "John D. Rockefeller" },
+      { text: "I find that the harder I work, the more luck I seem to have.", author: "Thomas Jefferson" },
+      { text: "Opportunities don't happen. You create them.", author: "Chris Grosser" },
+      { text: "Try not to become a man of success. Rather become a man of value.", author: "Albert Einstein" },
+      { text: "Success usually comes to those who are too busy to be looking for it.", author: "Henry David Thoreau" },
+      { text: "Don’t be pushed around by the fears in your mind. Be led by the dreams in your heart.", author: "Roy T. Bennett" },
+      { text: "Magic is believing in yourself. If you can do that, you can make anything happen.", author: "Johann Wolfgang von Goethe" },
+      { text: "If you want to achieve greatness stop asking for permission.", author: "Anonymous" },
+      { text: "Things work out best for those who make the best of how things work out.", author: "John Wooden" },
+      { text: "To live a creative life, we must lose our fear of being wrong.", author: "Joseph Chilton Pearce" },
+      { text: "If you are not willing to risk the usual you will have to settle for the ordinary.", author: "Jim Rohn" },
+      { text: "Trust because you are willing to accept the risk, not because it's safe or certain.", author: "Anonymous" },
+      { text: "Take up one idea. Make that one idea your life.", author: "Swami Vivekananda" },
+      { text: "All our dreams can come true if we have the courage to pursue them.", author: "Walt Disney" },
+      { text: "Good things come to people who wait, but better things come to those who go out and get them.", author: "Anonymous" },
+      { text: "If you do what you always did, you will get what you always got.", author: "Anonymous" },
+      { text: "Success is walking from failure to failure with no loss of enthusiasm.", author: "Winston Churchill" },
+      { text: "Just when the caterpillar thought the world was ending, he turned into a butterfly.", author: "Proverb" },
+      { text: "Successful people do what unsuccessful people are not willing to do.", author: "Jim Rohn" },
+      { text: "The only place where success comes before work is in the dictionary.", author: "Vidal Sassoon" },
+      { text: "The best revenge is massive success.", author: "Frank Sinatra" },
+      { text: "Success is not in what you have, but who you are.", author: "Bo Bennett" },
+      { text: "Your time is limited, so don’t waste it living someone else’s life.", author: "Steve Jobs" },
+      { text: "Don’t be afraid to give up the good to go for the great.", author: "John D. Rockefeller" },
+      { text: "I never dreamed about success. I worked for it.", author: "Estee Lauder" },
+      { text: "Success is liking yourself, liking what you do, and liking how you do it.", author: "Maya Angelou" },
+      { text: "Success is not how high you have climbed, but how you make a positive difference to the world.", author: "Roy T. Bennett" },
+      { text: "Success is getting what you want. Happiness is wanting what you get.", author: "Dale Carnegie" },
+      { text: "Success is not the key to happiness. Happiness is the key to success.", author: "Albert Schweitzer" },
+      { text: "Success is achieved and maintained by those who try and keep trying.", author: "W. Clement Stone" },
+      { text: "Success is a journey, not a destination.", author: "Ben Sweetland" },
+      { text: "Success is the progressive realization of a worthy goal or ideal.", author: "Earl Nightingale" },
+      { text: "Success is doing ordinary things extraordinarily well.", author: "Jim Rohn" },
+      { text: "Success is not measured by money or power but by the positive impact you have.", author: "Anonymous" },
+      { text: "Success is when the checks don’t bounce.", author: "Andy Warhol" },
+      { text: "Success is stumbling from failure to failure with no loss of enthusiasm.", author: "Winston Churchill" },
+      { text: "Success is the ability to go from one failure to another with no loss of enthusiasm.", author: "Winston Churchill" },
+      { text: "Success is not about being the best. It’s about always getting better.", author: "Behdad Sami" },
+      { text: "Success is not for the lazy.", author: "Anonymous" },
+      { text: "Success is not something you pursue. Success is something you attract by the person you become.", author: "Jim Rohn" },
+      { text: "Success is not to be pursued; it is to be attracted by the person you become.", author: "Jim Rohn" },
+      { text: "Success is not a destination, but the road that you're on.", author: "Marlon Wayans" },
+      { text: "Success is not about how much money you make; it’s about the difference you make in people’s lives.", author: "Michelle Obama" },
+      { text: "Success is not the absence of failure; it’s the persistence through failure.", author: "Aisha Tyler" },
+      { text: "Success is not final, failure is not fatal.", author: "Winston Churchill" },
+      { text: "Success is not for the chosen few, but for the few who choose it.", author: "Anonymous" },
+      { text: "Success is not about luck. It’s about hard work, perseverance, and learning.", author: "Anonymous" },
+      { text: "Success is not about being perfect. It’s about effort.", author: "Anonymous" },
+      { text: "Success is not about what you have, but about who you become.", author: "Anonymous" },
+      { text: "Success is not about competing with others. It’s about competing with yourself.", author: "Anonymous" },
+      { text: "Success is not about being better than someone else. It’s about being better than you used to be.", author: "Wayne Dyer" },
+      { text: "Success is not about having more. It’s about being more.", author: "Anonymous" },
+      { text: "Success is not about what you do occasionally. It’s about what you do consistently.", author: "Marie Forleo" },
+      { text: "Success is not about talent. It’s about persistence.", author: "Anonymous" },
+      { text: "Success is not about finding yourself. It’s about creating yourself.", author: "George Bernard Shaw" }
+    ];
+
+    function showRandomQuote() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      const quote = quotes[randomIndex];
+      document.getElementById("quote").textContent = quote.text;
+      document.getElementById("author").textContent = `— ${quote.author}`;
+    }
+
+    showRandomQuote();
+    setInterval(showRandomQuote, 15000); // 15 seconds
+  </script>
+</body>
+</html>
